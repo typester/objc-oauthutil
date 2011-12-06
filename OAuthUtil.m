@@ -105,12 +105,7 @@ static NSData* HMAC_SHA1(NSString* data, NSString* key) {
                                             url:(NSURL*)url
                                          params:(NSDictionary*)params {
 
-    NSArray* keys = [params allKeys];
-    NSSortDescriptor* sort = [[NSSortDescriptor alloc] initWithKey:@"text" ascending:YES];
-    NSArray* sortDescs = [NSArray arrayWithObjects:sort, nil];
-
-    keys = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    [sort release];
+    NSArray* keys = [[params allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 
     NSMutableArray* pairs = [NSMutableArray array];
     for (NSString* k in keys) {
