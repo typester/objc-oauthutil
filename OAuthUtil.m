@@ -137,8 +137,8 @@ static NSData* HMAC_SHA1(NSString* data, NSString* key) {
         [headers addObject:s];
     }
 
-    NSString* header = [NSString stringWithFormat:@"OAuth realm=\"%@\" %@",
-                                 realm,
+    NSString* header = [NSString stringWithFormat:@"OAuth realm=\"%@\", %@",
+                                 encode_param(realm),
                                  [[headers sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] componentsJoinedByString:@", "]];
     return header;
 }
